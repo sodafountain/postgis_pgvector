@@ -1,5 +1,5 @@
 # Use the PostGIS image as the base
-FROM postgis/postgis:13-3.4
+FROM postgis/postgis:15-3.4
 
 # Install necessary packages
 RUN apt-get update \
@@ -8,7 +8,7 @@ RUN apt-get update \
        libpq-dev \
        wget \
        git \
-       postgresql-server-dev-13 \
+       postgresql-server-dev-15 \
     # Clean up to reduce layer size
     && rm -rf /var/lib/apt/lists/* \
     && git clone --branch v0.5.1 https://github.com/pgvector/pgvector.git /tmp/pgvector \
@@ -17,7 +17,7 @@ RUN apt-get update \
     && make install \
     # Clean up unnecessary files
     && cd - \
-    && apt-get purge -y --auto-remove build-essential postgresql-server-dev-13 libpq-dev wget git \
+    && apt-get purge -y --auto-remove build-essential postgresql-server-dev-15 libpq-dev wget git \
     && rm -rf /tmp/pgvector
 
 # Copy initialization scripts
