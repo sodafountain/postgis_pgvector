@@ -21,7 +21,7 @@ jobs:
 
     - name: Build Docker image
       run: |
-        docker build \
+        docker buildx build --platform linux/amd64,linux/arm64 --no-cache \
           -t sodafountain/postgis_pgvector:${{ github.ref_name }} \
           -t sodafountain/postgis_pgvector:latest \
           .

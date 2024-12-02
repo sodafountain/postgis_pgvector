@@ -8,6 +8,12 @@ RUN apt-get update \
        libpq-dev \
        wget \
        git \
+       clang-13 \
+       llvm-13 \
+       llvm-13-dev \
+       llvm-13-linker-tools \
+       llvm-13-runtime \
+       llvm-13-tools \
        postgresql-server-dev-15 \
     # Clean up to reduce layer size
     && rm -rf /var/lib/apt/lists/* \
