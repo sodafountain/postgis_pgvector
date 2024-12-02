@@ -25,6 +25,10 @@ jobs:
           -t sodafountain/postgis_pgvector:${{ github.ref_name }} \
           -t sodafountain/postgis_pgvector:latest \
           .
+        docker buildx build --platform linux/arm64/v8 --no-cache \
+          -t sodafountain/postgis_pgvector:${{ github.ref_name }}-arm64v8 \
+          -t sodafountain/postgis_pgvector:latest-arm64v8 \
+          .
 
     - name: Push to Docker Hub
       run: docker push -a sodafountain/postgis_pgvector
